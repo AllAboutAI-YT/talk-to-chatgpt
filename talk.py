@@ -65,12 +65,12 @@ def text_to_speech(text, voice_id, api_key):
 
 def print_colored(agent, text):
     agent_colors = {
-        "A19:": Fore.YELLOW,
+        "Julie:": Fore.YELLOW,
     }
     color = agent_colors.get(agent, "")
     print(color + f"{agent}: {text}" + Style.RESET_ALL, end="")
 
-voice_id1 = 'KvOIVuse8GGfRvA4I21k'
+voice_id1 = 'Your Voice ID'
 
 def record_and_transcribe(duration=8, fs=44100):
     print('Recording...')
@@ -88,6 +88,6 @@ def record_and_transcribe(duration=8, fs=44100):
 while True:
     user_message = record_and_transcribe()
     response = chatgpt(api_key, conversation1, chatbot1, user_message)
-    print_colored("A19:", f"{response}\n\n")
+    print_colored("Julie:", f"{response}\n\n")
     user_message_without_generate_image = re.sub(r'(Response:|Narration:|Image: generate_image:.*|)', '', response).strip()
     text_to_speech(user_message_without_generate_image, voice_id1, elapikey)
